@@ -1,0 +1,833 @@
+{
+  "schema_version": 1,
+  "baseline_date": "2026-10-22",
+  "language": {
+    "core": "Go",
+    "neovim": "Lua"
+  },
+  "status_semantics": "Planning statuses, distinct from runtime ADE ticket states. Ready does not mean assigned.",
+  "gates": {
+    "codex_interface_verified": {
+      "status": "unverified",
+      "evidence_owner": "ADE-015",
+      "required_evidence": "Supported structured Codex interface and redacted reproducible fixtures."
+    },
+    "real_codex_authenticated": {
+      "status": "unverified",
+      "evidence_owner": "ADE-019",
+      "required_evidence": "Live smoke on supported installed Codex/model profile with available authentication."
+    }
+  },
+  "epics": [
+    {
+      "id": "E01",
+      "title": "Core foundations and protocol",
+      "path": "specs/epics/E01-foundation.md",
+      "tickets": [
+        "ADE-001",
+        "ADE-002",
+        "ADE-003",
+        "ADE-004"
+      ]
+    },
+    {
+      "id": "E02",
+      "title": "Projects, backlog and ticket workflow",
+      "path": "specs/epics/E02-planning.md",
+      "tickets": [
+        "ADE-005",
+        "ADE-006",
+        "ADE-007"
+      ]
+    },
+    {
+      "id": "E03",
+      "title": "Attention queue and context recovery",
+      "path": "specs/epics/E03-attention.md",
+      "tickets": [
+        "ADE-008",
+        "ADE-009",
+        "ADE-010"
+      ]
+    },
+    {
+      "id": "E04",
+      "title": "Git workspaces and controlled writing",
+      "path": "specs/epics/E04-git.md",
+      "tickets": [
+        "ADE-011",
+        "ADE-012",
+        "ADE-013",
+        "ADE-014"
+      ]
+    },
+    {
+      "id": "E05",
+      "title": "Provider-neutral agents and Codex integration",
+      "path": "specs/epics/E05-agents.md",
+      "tickets": [
+        "ADE-015",
+        "ADE-016",
+        "ADE-017",
+        "ADE-018",
+        "ADE-019"
+      ]
+    },
+    {
+      "id": "E06",
+      "title": "Validation, review, integration and recovery",
+      "path": "specs/epics/E06-completion.md",
+      "tickets": [
+        "ADE-020",
+        "ADE-021",
+        "ADE-022",
+        "ADE-023",
+        "ADE-024"
+      ]
+    },
+    {
+      "id": "E07",
+      "title": "Complete headless human control",
+      "path": "specs/epics/E07-cli.md",
+      "tickets": [
+        "ADE-025",
+        "ADE-026"
+      ]
+    },
+    {
+      "id": "E08",
+      "title": "Neovim ticket workspace",
+      "path": "specs/epics/E08-neovim.md",
+      "tickets": [
+        "ADE-027",
+        "ADE-028",
+        "ADE-029",
+        "ADE-030"
+      ]
+    },
+    {
+      "id": "E09",
+      "title": "Operational and self-hosting acceptance",
+      "path": "specs/epics/E09-self-hosting.md",
+      "tickets": [
+        "ADE-031",
+        "ADE-032",
+        "ADE-033"
+      ]
+    }
+  ],
+  "tickets": [
+    {
+      "id": "ADE-001",
+      "title": "Bootstrap the Go repository and local verification",
+      "epic": "E01",
+      "path": "specs/tickets/ADE-001-go-bootstrap.md",
+      "status": "ready",
+      "size": "S",
+      "dependencies": [],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R16"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-002",
+      "title": "Implement domain records, invariants and transition rules",
+      "epic": "E01",
+      "path": "specs/tickets/ADE-002-domain-model.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-001"
+      ],
+      "gate": null,
+      "requirements": [
+        "R03",
+        "R04",
+        "R05",
+        "R10"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-003",
+      "title": "Persist state, events, idempotency and durable jobs",
+      "epic": "E01",
+      "path": "specs/tickets/ADE-003-sqlite-state.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-002"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R03",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-004",
+      "title": "Serve versioned local RPC with replay and stdio bridge",
+      "epic": "E01",
+      "path": "specs/tickets/ADE-004-local-rpc.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-003"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-005",
+      "title": "Register local projects and validate installation configuration",
+      "epic": "E02",
+      "path": "specs/tickets/ADE-005-projects-config.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-004"
+      ],
+      "gate": null,
+      "requirements": [
+        "R02",
+        "R08",
+        "R14"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-006",
+      "title": "Create epics and complete ticket specifications",
+      "epic": "E02",
+      "path": "specs/tickets/ADE-006-backlog-crud.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-005"
+      ],
+      "gate": null,
+      "requirements": [
+        "R03",
+        "R13"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-007",
+      "title": "Expose guarded readiness and workflow application services",
+      "epic": "E02",
+      "path": "specs/tickets/ADE-007-workflow-commands.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-006",
+        "ADE-002"
+      ],
+      "gate": null,
+      "requirements": [
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-008",
+      "title": "Persist and rank the attention queue with aging",
+      "epic": "E03",
+      "path": "specs/tickets/ADE-008-attention-store.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-007"
+      ],
+      "gate": null,
+      "requirements": [
+        "R12",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-009",
+      "title": "Implement next, preview, requeue and guarded resolution",
+      "epic": "E03",
+      "path": "specs/tickets/ADE-009-attention-actions.md",
+      "status": "blocked",
+      "size": "S",
+      "dependencies": [
+        "ADE-008"
+      ],
+      "gate": null,
+      "requirements": [
+        "R12",
+        "R14"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-010",
+      "title": "Build durable ticket context and resource summaries",
+      "epic": "E03",
+      "path": "specs/tickets/ADE-010-context-projection.md",
+      "status": "blocked",
+      "size": "S",
+      "dependencies": [
+        "ADE-008",
+        "ADE-006"
+      ],
+      "gate": null,
+      "requirements": [
+        "R13",
+        "R06"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-011",
+      "title": "Create isolated ticket worktrees and configurable branches",
+      "epic": "E04",
+      "path": "specs/tickets/ADE-011-git-workspaces.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-005"
+      ],
+      "gate": null,
+      "requirements": [
+        "R08",
+        "R02"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-012",
+      "title": "Coordinate fenced writers and supervised processes",
+      "epic": "E04",
+      "path": "specs/tickets/ADE-012-writer-leases.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-011",
+        "ADE-003",
+        "ADE-008"
+      ],
+      "gate": null,
+      "requirements": [
+        "R10",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-013",
+      "title": "Publish immutable candidates and exact snapshot diffs",
+      "epic": "E04",
+      "path": "specs/tickets/ADE-013-candidates-diffs.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-012",
+        "ADE-007"
+      ],
+      "gate": null,
+      "requirements": [
+        "R09",
+        "R05",
+        "R08"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-014",
+      "title": "Hand worktrees to humans and preserve manual commits",
+      "epic": "E04",
+      "path": "specs/tickets/ADE-014-manual-editing.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-013",
+        "ADE-012"
+      ],
+      "gate": null,
+      "requirements": [
+        "R09",
+        "R10",
+        "R14"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-015",
+      "title": "Verify the installed Codex structured integration surface",
+      "epic": "E05",
+      "path": "specs/tickets/ADE-015-codex-compatibility.md",
+      "status": "ready",
+      "size": "S",
+      "dependencies": [],
+      "gate": null,
+      "requirements": [
+        "R07",
+        "R06"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-016",
+      "title": "Implement provider contracts and a deterministic fake tool",
+      "epic": "E05",
+      "path": "specs/tickets/ADE-016-provider-port.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-003",
+        "ADE-002"
+      ],
+      "gate": null,
+      "requirements": [
+        "R06",
+        "R07",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-017",
+      "title": "Assign roles and orchestrate ticket-scoped agents",
+      "epic": "E05",
+      "path": "specs/tickets/ADE-017-agent-lifecycle.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-007",
+        "ADE-012",
+        "ADE-016",
+        "ADE-004"
+      ],
+      "gate": null,
+      "requirements": [
+        "R04",
+        "R05",
+        "R06",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-018",
+      "title": "Review and atomically apply backlog-agent proposals",
+      "epic": "E05",
+      "path": "specs/tickets/ADE-018-backlog-agent.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-017",
+        "ADE-006"
+      ],
+      "gate": null,
+      "requirements": [
+        "R03",
+        "R06",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-019",
+      "title": "Integrate verified Codex sessions, chat and interventions",
+      "epic": "E05",
+      "path": "specs/tickets/ADE-019-codex-chat.md",
+      "status": "blocked",
+      "size": "L",
+      "dependencies": [
+        "ADE-015",
+        "ADE-017"
+      ],
+      "gate": "codex_interface_verified",
+      "requirements": [
+        "R06",
+        "R07",
+        "R12",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-020",
+      "title": "Run exact-candidate validation and publish test evidence",
+      "epic": "E06",
+      "path": "specs/tickets/ADE-020-validation.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-013",
+        "ADE-017",
+        "ADE-016"
+      ],
+      "gate": null,
+      "requirements": [
+        "R11",
+        "R05",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-021",
+      "title": "Anchor review discussions and enforce requested corrections",
+      "epic": "E06",
+      "path": "specs/tickets/ADE-021-review-comments.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-013",
+        "ADE-017"
+      ],
+      "gate": null,
+      "requirements": [
+        "R09",
+        "R04",
+        "R13"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-022",
+      "title": "Bind human approval to validated candidate identity",
+      "epic": "E06",
+      "path": "specs/tickets/ADE-022-review-approval.md",
+      "status": "blocked",
+      "size": "S",
+      "dependencies": [
+        "ADE-020",
+        "ADE-021",
+        "ADE-009"
+      ],
+      "gate": null,
+      "requirements": [
+        "R04",
+        "R09",
+        "R11"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-023",
+      "title": "Integrate approved candidates and reconcile Git journals",
+      "epic": "E06",
+      "path": "specs/tickets/ADE-023-integration.md",
+      "status": "blocked",
+      "size": "L",
+      "dependencies": [
+        "ADE-022",
+        "ADE-014"
+      ],
+      "gate": null,
+      "requirements": [
+        "R08",
+        "R05",
+        "R15",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-024",
+      "title": "Recover interrupted work and expose bounded artifacts",
+      "epic": "E06",
+      "path": "specs/tickets/ADE-024-recovery-artifacts.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-023",
+        "ADE-019",
+        "ADE-018"
+      ],
+      "gate": null,
+      "requirements": [
+        "R15",
+        "R06",
+        "R13"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-025",
+      "title": "Expose project, backlog, context and review reads in CLI",
+      "epic": "E07",
+      "path": "specs/tickets/ADE-025-cli-read.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-010",
+        "ADE-013",
+        "ADE-004"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R03",
+        "R12",
+        "R13",
+        "R14"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-026",
+      "title": "Expose all human execution, review and recovery commands",
+      "epic": "E07",
+      "path": "specs/tickets/ADE-026-cli-workflow.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-025",
+        "ADE-024"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R04",
+        "R06",
+        "R09",
+        "R11",
+        "R14"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-027",
+      "title": "Build the Lua plugin transport and reconnecting state cache",
+      "epic": "E08",
+      "path": "specs/tickets/ADE-027-nvim-transport.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-004"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R14",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-028",
+      "title": "Add ticket Kanban, context and attention navigation",
+      "epic": "E08",
+      "path": "specs/tickets/ADE-028-nvim-workspace.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-027",
+        "ADE-010",
+        "ADE-009",
+        "ADE-017"
+      ],
+      "gate": null,
+      "requirements": [
+        "R03",
+        "R12",
+        "R13",
+        "R14",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-029",
+      "title": "Review side-by-side snapshots and edit through human ownership",
+      "epic": "E08",
+      "path": "specs/tickets/ADE-029-nvim-review.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-028",
+        "ADE-014",
+        "ADE-021",
+        "ADE-022",
+        "ADE-023"
+      ],
+      "gate": null,
+      "requirements": [
+        "R09",
+        "R10",
+        "R04"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-030",
+      "title": "Add agent chat, interventions, testing and backlog proposal views",
+      "epic": "E08",
+      "path": "specs/tickets/ADE-030-nvim-agents-tests.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-029",
+        "ADE-019",
+        "ADE-020",
+        "ADE-018"
+      ],
+      "gate": null,
+      "requirements": [
+        "R06",
+        "R07",
+        "R11",
+        "R12",
+        "R13",
+        "R03"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-031",
+      "title": "Verify the complete headless and Neovim self-hosting flow",
+      "epic": "E09",
+      "path": "specs/tickets/ADE-031-e2e-workflow.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-026",
+        "ADE-030",
+        "ADE-024"
+      ],
+      "gate": null,
+      "requirements": [
+        "R01",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-032",
+      "title": "Package Linux installation and measure operational readiness",
+      "epic": "E09",
+      "path": "specs/tickets/ADE-032-release-operations.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-031"
+      ],
+      "gate": null,
+      "requirements": [
+        "R02",
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    },
+    {
+      "id": "ADE-033",
+      "title": "Use ADE to develop ADE and record MVP acceptance",
+      "epic": "E09",
+      "path": "specs/tickets/ADE-033-self-hosting-rehearsal.md",
+      "status": "blocked",
+      "size": "M",
+      "dependencies": [
+        "ADE-032",
+        "ADE-019"
+      ],
+      "gate": "real_codex_authenticated",
+      "requirements": [
+        "R16",
+        "R01",
+        "R04",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R15"
+      ],
+      "assignee": null,
+      "priority": "P0"
+    }
+  ],
+  "deferred": [
+    {
+      "id": "D01",
+      "title": "macOS/Windows transport, process and permissions support"
+    },
+    {
+      "id": "D02",
+      "title": "Remote hosting and issue/PR tracker adapters"
+    },
+    {
+      "id": "D03",
+      "title": "Multi-user collaboration and remote authentication"
+    },
+    {
+      "id": "D04",
+      "title": "Dynamic extension protocol and additional frontends/providers"
+    },
+    {
+      "id": "D05",
+      "title": "Advanced indexing, persistent provider memory and context compaction"
+    },
+    {
+      "id": "D06",
+      "title": "Submodules, LFS, bare/unborn repositories and relocation"
+    },
+    {
+      "id": "D07",
+      "title": "Partial proposal acceptance and richer backlog editing"
+    }
+  ]
+}
