@@ -9,6 +9,18 @@
 | Providers | External tools or APIs behind Go interfaces. Domain logic is independent of any provider's protocol or session behavior. |
 | Git | Separate ticket worktrees and commit-based review isolate concurrent changes. |
 
+Proposed layout:
+
+```text
+cmd/hea/                   executable and CLI
+internal/domain/           rules and types; no I/O
+internal/application/      use cases and interfaces
+internal/store/            SQLite and migrations
+internal/transport/        local RPC and stdio bridge
+internal/adapter/          Git, processes and providers
+lua/hea/, plugin/hea.lua    Neovim client
+```
+
 Core contains domain rules, application services and adapters for storage, Git and providers. Adapters implement application interfaces; domain code has no UI or provider dependency. The entry point is `cmd/hea`; the Go module is `github.com/NUX-FerRomMu/HEAD-core`.
 
 Configuration and runtime state live outside the project checkout. Platform-specific transport and process code remain behind adapters.

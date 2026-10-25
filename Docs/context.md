@@ -6,7 +6,7 @@ HEAD supports development with coding agents, with tickets as the main unit of w
 
 A project opens from a local folder. Its backlog can be maintained manually or refined with an agent. Backlog, development and testing are the initial agent roles.
 
-Agent assignment and review approval are manual by default. They are configurable behaviors, not permanent human-only restrictions.
+Agent assignment and review approval are manual by default.
 
 Development agents normally work on a ticket and remain available through corrections. Conversations follow that context by default; shared agents, conversations or a project-wide coordinator remain possible.
 
@@ -14,8 +14,8 @@ The usual cycle is assignment, implementation, commit, testing, review and integ
 
 ## Attention and navigation
 
-The attention queue collects pending interventions and reviews. Priority and aging help surface waiting work; next, preview and requeue support quick navigation without restricting what the user can select.
+A priority queue is central: it groups interventions and review actions, ages waiting items, and offers `next`, quick previews, direct actions, and lower-priority unread requeue. The user can always choose another item.
 
-Ticket context brings together current state, a short summary, pending actions, conversations, changes and test results. Neovim supplies editing and configurable navigation.
+Switching tickets restores a short factual summary, current state, pending decisions, and links to chat, changes, and tests. Navigation and mappings should fit normal Vim usage.
 
 Configuration is local to each installation. The first platform is Linux, with other platforms and frontends possible through the core's boundaries.

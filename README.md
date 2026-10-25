@@ -9,3 +9,9 @@ Build your own workflow, orchestrate coding agents, track their progress, review
 HEAD embraces a simple philosophy: **AI agents do the work, but you do the thinking.**
 
 Your agents. Your workflow. Your HEAD.
+
+## Documentation
+
+- [Product context](Docs/context.md)
+- [Architecture](Docs/architecture.md)
+- [Initial backlog](specs/backlog.md)
