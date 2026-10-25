@@ -1,26 +1,21 @@
 # Product context
 
-HEAD organizes development around tickets and the human decisions they need. Neovim is the first frontend; the core remains usable independently. The goal is an MVP capable of developing HEAD itself.
+HEAD supports development with coding agents, with tickets as the main unit of work. The goal is to use HEAD to develop HEAD itself.
 
-## Essential workflow
+## Default workflow
 
-- Open a local Git project, maintain its backlog and Kanban, and refine work into tickets with enough context for another agent.
-- The human assigns agents. Initial roles are backlog refinement, development, and testing. Backlog agents propose changes for human acceptance; they do not assign work.
-- A developer belongs to a ticket, remains available through corrections, and closes when the work ends. Conversations belong to those agents, not a detached global chat.
-- The intended implementation cycle is `assigned → doing → committed → fixing → committed → done`; successful validation can proceed from committed directly to human review and integration.
-- Testing runs against the committed candidate and reports results and available coverage. Failures return work for correction. Human review approval authorizes integration.
-- Review supports side-by-side diffs, selected files, anchored comments, agent replies, forced corrections, and manual edits with their own commits.
+A project opens from a local folder. Its backlog can be maintained manually or refined with an agent. Backlog, development and testing are the initial agent roles.
+
+Agent assignment and review approval are manual by default. They are configurable behaviors, not permanent human-only restrictions.
+
+Development agents normally work on a ticket and remain available through corrections. Conversations follow that context by default; shared agents, conversations or a project-wide coordinator remain possible.
+
+The usual cycle is assignment, implementation, commit, testing, review and integration, returning to implementation when corrections are needed. Review includes diffs, line comments, replies and manual edits.
 
 ## Attention and navigation
 
-A priority queue is central: it groups interventions and review actions, ages waiting items, and offers `next`, quick previews, direct actions, and lower-priority unread requeue. The user can always choose another item.
+The attention queue collects pending interventions and reviews. Priority and aging help surface waiting work; next, preview and requeue support quick navigation without restricting what the user can select.
 
-Switching tickets restores a short factual summary, current state, pending decisions, and links to chat, changes, and tests. Navigation and mappings should fit normal Vim usage.
+Ticket context brings together current state, a short summary, pending actions, conversations, changes and test results. Neovim supplies editing and configurable navigation.
 
-## Boundaries
-
-Settings belong to the local installation; separate clones or machines have independent configuration. Commands, mappings, branch naming and provider selection are configurable.
-
-Humans can perform the work manually. HEAD prevents its own agents and editor actions from writing the same worktree concurrently; reviewing an older commit remains possible.
-
-Start on Linux while keeping platform-specific code isolated. Other frontends and providers should fit behind clear boundaries. Hosted collaboration, a graphical UI and a general extension marketplace are outside the first MVP.
+Configuration is local to each installation. The first platform is Linux, with other platforms and frontends possible through the core's boundaries.
