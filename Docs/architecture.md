@@ -25,6 +25,8 @@ Core contains domain rules, application services and adapters for storage, Git a
 
 Configuration and runtime state live outside the project checkout. Platform-specific transport and process code remain behind adapters.
 
+The first working client invokes the Go CLI asynchronously with JSON/JSONL responses. The daemon and RPC transport remain a later step; Lua contains presentation and input handling only.
+
 ## Policy and coordination
 
 Manual assignment and review approval are defaults. Automation policy is separate from domain state so those defaults can evolve without replacing the core.

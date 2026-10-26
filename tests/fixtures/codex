@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+if [ "$1" = --version ]; then echo codex-fixture; exit 0; fi
+if [ "$1" = login ]; then exit 0; fi
+prompt=$(cat)
+printf '{"type":"turn.started"}\n'
+case "$prompt" in
+  *SLOW*)
+    sleep 30 &
+    if [ -n "${HEAD_TEST_CHILD:-}" ]; then echo $! > "$HEAD_TEST_CHILD"; fi
+    wait
+    ;;
+  *FAIL*)
+    printf '{"type":"turn.failed","error":{"message":"fixture failure"}}\n'
+    echo 'fixture failure' >&2
+    exit 7
+    ;;
+esac
+printf '{"type":"item.completed","item":{"type":"agent_message","text":"fixture response"}}\n'
+printf '{"type":"turn.completed"}\n'

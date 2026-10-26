@@ -2,7 +2,7 @@
 
 Dependencies: HEAD-005, HEAD-006, HEAD-007. Integrate the reviewed feature branches without rewriting their implementations.
 
-Add a Lua client for Neovim 0.10+ using asynchronous `hea` subprocesses. `:HEADBoard` displays the four Kanban columns; mappings create, inspect, edit and move tickets. `:HEADNotifications` displays the ordered queue and supports adding, dismissing and requeuing. `:HEADRun` accepts a prompt and streams Codex output; `:HEADStop` cancels the active run. Completion/failure creates a persistent notification. Configuration accepts the `hea` executable, project and data directory.
+Add a Lua client for Neovim 0.10+ using asynchronous `hea` subprocesses. `:HEADBoard` displays the four Kanban columns; mappings create, inspect, edit and move tickets. `:HEADNotifications` displays the ordered queue and supports adding, dismissing and requeuing. `:HEADRun` accepts a prompt and streams Codex output; `:HEADStop` cancels the active run. The Go command records completion/failure/cancellation as persistent notifications, including runs started outside Neovim. Configuration accepts the `hea` executable, project and data directory.
 
 ## Acceptance
 
