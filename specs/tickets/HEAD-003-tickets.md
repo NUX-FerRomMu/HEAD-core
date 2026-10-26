@@ -1,13 +1,15 @@
 # HEAD-003 — Create and list tickets
 
-Dependency: HEAD-002. Scope: two application operations with persistence.
+Dependency: HEAD-001. Scope: two application operations against a repository interface.
 
-Add a ticket record with generated ID, title, description and acceptance criteria. Create accepts a nonempty trimmed title; description and criteria may be empty while drafting. List returns stored tickets in insertion order. Add the required migration and application-facing repository interface.
+Implement `NewTicketService` and `application.Tickets` from the [ticket interface](../ticket-interface.md). Create generates an ID and accepts a nonempty trimmed title; description and criteria may be empty while drafting. List returns repository records in insertion order. All storage is through the injected `TicketRepository`.
+
+Owned paths: `internal/application/ticket_service.go` and its tests. An in-memory repository test double lets this ticket finish independently of HEAD-002; no SQL or migrations belong here.
 
 ## Acceptance
 
-- Creating two tickets gives distinct IDs; listing after reopening the database returns their original content and order.
-- A blank title fails without inserting a row. A failed write returns an error, not a successful ticket.
+- Creating two tickets gives distinct IDs and passes the normalized records to the repository. Listing returns its original content and order.
+- A blank title fails without calling Insert. Repository failures from either operation propagate as errors; failed creation returns no successful ticket.
 - Application/domain code does not import the SQLite driver or CLI package.
 
-Verification: validation tests and temporary-database integration tests. Editing, lifecycle states, project relationships and agent assignment are outside this ticket.
+Verification: service tests with an in-memory repository and injected storage errors; `go test ./...` and `go vet ./...`. Database persistence is verified by HEAD-002 and end-to-end wiring by HEAD-005. Editing, lifecycle states, project relationships and agent assignment are outside this ticket.

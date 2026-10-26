@@ -1,13 +1,15 @@
 # HEAD-004 — Ticket CLI commands
 
-Dependency: HEAD-003. Scope: expose the existing create/list operations.
+Dependency: HEAD-001. Scope: ticket command parsing and output against an injected service.
 
-Add `hea --db <path> ticket create --title <text> [--description <text>] [--criterion <text>]` and `hea --db <path> ticket list`; criterion is repeatable. Require an explicit database path for this initial interface. Commands call the application services from HEAD-003.
+Implement the handler for `hea --db <path> ticket create --title <text> [--description <text>] [--criterion <text>]` and `hea --db <path> ticket list`; criterion is repeatable. Require an explicit database path for this initial interface. `cli.RunTickets` receives arguments without the executable name, output/error writers and a service-opening function, as defined in the [ticket interface](../ticket-interface.md).
+
+Owned paths: `internal/cli/`. Tests inject a fake `application.Tickets` through the opener, so neither HEAD-002 nor HEAD-003 blocks this work. Wiring the real executable is HEAD-005; this ticket does not edit `cmd/hea` or import SQLite.
 
 ## Acceptance
 
-- Create prints the new ID; a later list process shows that ID and title from the same database.
-- Quoted text, Unicode and repeated criteria reach the store unchanged, except for the documented title trimming.
-- Missing database path, invalid arguments or storage failures return nonzero with diagnostics on stderr, without creating a fallback database.
+- Create prints the service's returned ID; list prints the returned IDs and titles in order. The opener receives the exact database path and its cleanup runs after success or failure.
+- Text containing spaces, Unicode and repeated criteria reaches the service unchanged; title validation/normalization remains in the service.
+- Missing database path or invalid arguments fails before opening the service. Opener/service errors return nonzero with diagnostics on stderr and no success output.
 
-Verification: subprocess tests against a temporary database, plus `go test ./...` and `go vet ./...`. JSON output, project discovery, configuration profiles, RPC and Neovim are outside this ticket.
+Verification: handler tests using fake services and captured writers, plus `go test ./...` and `go vet ./...`. These test command behavior, not persistent CLI integration. JSON output, project discovery, configuration profiles, RPC and Neovim are outside this ticket.
