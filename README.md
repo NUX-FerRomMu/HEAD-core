@@ -12,6 +12,7 @@ Your agents. Your workflow. Your HEAD.
 
 ## Documentation
 
+- [Getting started](Docs/getting-started.md)
 - [Product context](Docs/context.md)
 - [Architecture](Docs/architecture.md)
 - [Initial backlog](specs/backlog.md)
