@@ -2,7 +2,7 @@
 
 Dependency: HEAD-001. Independent of tickets and notifications.
 
-`hea agent status` reports Codex availability and login readiness. `hea agent run --prompt TEXT [--model NAME]` invokes the installed Codex CLI in the selected project using its existing authentication and configuration. Stream JSONL events to stdout and diagnostics to stderr. An adapter keeps process details out of the command's orchestration. Do not add privilege or approval bypass flags.
+`hea agent status` reports Codex availability and local login presence (a run verifies server access). `hea agent run --prompt TEXT [--model NAME]` invokes the installed Codex CLI in the selected project using its existing authentication and configuration. Stream JSONL events to stdout and diagnostics to stderr. An adapter keeps process details out of the command's orchestration. Do not add privilege or approval bypass flags.
 
 ## Acceptance
 
