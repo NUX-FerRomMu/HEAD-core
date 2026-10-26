@@ -10,13 +10,15 @@ The first usable release delivers three independent capabilities: a ticket board
 | [HEAD-005](tickets/HEAD-005-kanban.md) | Persistent backlog and Kanban transitions | HEAD-001 | [PR #4](https://github.com/NUX-FerRomMu/HEAD-core/pull/4) |
 | [HEAD-006](tickets/HEAD-006-notifications.md) | Persistent attention queue | HEAD-001 | [PR #5](https://github.com/NUX-FerRomMu/HEAD-core/pull/5) |
 | [HEAD-007](tickets/HEAD-007-codex.md) | Run and cancel Codex tasks | HEAD-001 | [PR #6](https://github.com/NUX-FerRomMu/HEAD-core/pull/6) |
-| [HEAD-008](tickets/HEAD-008-neovim.md) | Neovim board, notifications and agent output | HEAD-005, HEAD-006, HEAD-007 | In review |
+| [HEAD-008](tickets/HEAD-008-neovim.md) | Neovim board, notifications and agent output | HEAD-005, HEAD-006, HEAD-007 | [PR #7](https://github.com/NUX-FerRomMu/HEAD-core/pull/7) |
 
 HEAD-002, HEAD-003 and HEAD-004 are superseded by these complete feature tickets; their original specs remain for reference.
 
 ## Branches and review
 
 Start independent work from `develop`. While a required change is under review, branch from its implementation and name the prerequisite PR. HEAD-005, HEAD-006 and HEAD-007 share only HEAD-001; none depends on another feature. HEAD-008 combines them. Review status does not imply acceptance or permission to merge.
+
+Merge order: #3, then #4/#5/#6 in any order, then #7. Retarget child PRs to `develop` after their prerequisites land. The complete runnable version is on `feat/head-008-neovim`.
 
 Execution instructions are in [AGENTS.md](../AGENTS.md).
 
