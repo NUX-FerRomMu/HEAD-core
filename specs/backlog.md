@@ -6,7 +6,7 @@ The first usable release delivers three independent capabilities: a ticket board
 
 | Ticket | Deliverable | Dependency | Status |
 |---|---|---|---|
-| [HEAD-001](tickets/HEAD-001-command.md) | Go executable and shared local runtime | None | Ready |
+| [HEAD-001](tickets/HEAD-001-command.md) | Go executable and shared local runtime | None | In review |
 | [HEAD-005](tickets/HEAD-005-kanban.md) | Persistent backlog and Kanban transitions | HEAD-001 | Planned |
 | [HEAD-006](tickets/HEAD-006-notifications.md) | Persistent attention queue | HEAD-001 | Planned |
 | [HEAD-007](tickets/HEAD-007-codex.md) | Run and cancel Codex tasks | HEAD-001 | Planned |
